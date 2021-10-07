@@ -1,0 +1,9 @@
+app.id: ${random.uuid}
+spring:
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+  application:
+    name: data
+server:
+  port: 0

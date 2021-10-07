@@ -1,0 +1,13 @@
+### Without Gateway
+
+http://localhost:9002/value
+
+### With Gateway
+
+http://localhost:9000/aggregator/value
+
+### With Token & Gateway
+
+http://localhost:9000/aggregator/value
+Authorization: top-secret
+
