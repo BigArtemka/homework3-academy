@@ -5,8 +5,8 @@ services:
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
     ports:
-      - 2181:2181
-      - 8080:8080
+      - "2181:2181"
+      - "8080:8080"
   kafka1:
     image: bitnami/kafka
     environment:
@@ -17,7 +17,7 @@ services:
       - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka1:9092,EXTERNAL://localhost:9991
       - KAFKA_INTER_BROKER_LISTENER_NAME=CLIENT
     ports:
-      - 9991:9991
+      - "9991:9991"
     depends_on:
       - zookeeper
   kafka2:
@@ -30,7 +30,7 @@ services:
       - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka2:9092,EXTERNAL://localhost:9992
       - KAFKA_INTER_BROKER_LISTENER_NAME=CLIENT
     ports:
-      - 9992:9992
+      - "9992:9992"
     depends_on:
       - zookeeper
   kafka3:
@@ -43,6 +43,28 @@ services:
       - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka3:9092,EXTERNAL://localhost:9993
       - KAFKA_INTER_BROKER_LISTENER_NAME=CLIENT
     ports:
-      - 9993:9993
+      - "9993:9993"
     depends_on:
       - zookeeper
+  datadb:
+    image: postgres:alpine
+    command: ["postgres", "-c", "log_statement=all"]
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=data
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=pass
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+  userdb:
+    image: postgres:alpine
+    command: [ "postgres", "-c", "log_statement=all" ]
+    ports:
+      - "5434:5432"
+    environment:
+      - POSTGRES_DB=user
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=pass
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro

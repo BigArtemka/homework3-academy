@@ -1,4 +1,4 @@
-package com.example.consumer.data;
+package com.example.aggregator.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

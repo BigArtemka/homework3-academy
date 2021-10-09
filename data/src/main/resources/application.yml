@@ -1,9 +1,40 @@
-app.id: ${random.uuid}
 spring:
   cloud:
     zookeeper:
       connect-string: localhost:2181
   application:
     name: data
+  datasource:
+    url: ${JDBC_URL:jdbc:postgresql://localhost:5433/data?user=app&password=pass}
+  jpa:
+    generate-ddl: true
+    open-in-view: false
+  kafka:
+    bootstrap-servers: localhost:9991,localhost:9992,localhost:9993
+    consumer:
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      group-id: data
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      max-poll-records: 1
+      properties:
+        spring:
+          deserializer:
+            key:
+              delegate:
+                class: org.apache.kafka.common.serialization.StringDeserializer
+            value:
+              delegate:
+                class: org.springframework.kafka.support.serializer.JsonDeserializer
+          json:
+            use:
+              type:
+                headers: false
+            value:
+              default:
+                type: com.example.data.domain.Payload
+    listener:
+      ack-mode: manual_immediate
 server:
   port: 0

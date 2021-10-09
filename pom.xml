@@ -12,10 +12,12 @@
     <modules>
         <module>aggregator</module>
         <module>data</module>
+        <module>user</module>
 
         <module>gateway</module>
 
         <module>consumer</module>
         <module>producer</module>
+        <module>user</module>
     </modules>
 </project>

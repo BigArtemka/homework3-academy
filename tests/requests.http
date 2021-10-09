@@ -11,3 +11,21 @@ http://localhost:9000/aggregator/value
 http://localhost:9000/aggregator/value
 Authorization: top-secret
 
+###
+
+POST http://localhost:9000/producer/api/payments
+Content-Type: application/json
+
+{
+  "type": "payment",
+  "senderId": 2,
+  "senderCardNumber": "4112 5464 1281 2202",
+  "amount": 100000,
+  "comment": "qe"
+}
+
+###
+
+GET http://localhost:9000/aggregator/api/payments
+
+###
