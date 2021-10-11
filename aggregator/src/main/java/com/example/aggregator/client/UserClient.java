@@ -4,6 +4,7 @@ package com.example.aggregator.client;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.Map;
 import java.util.Set;
@@ -11,5 +12,5 @@ import java.util.Set;
 @FeignClient(value = "user")
 public interface UserClient {
     @PostMapping
-    Map<Long, String> getIdNameMap(@RequestBody Set<Long> userIds);
+    Map<Long, String> getIdNameMap(@RequestBody Set<Long> userIds, @RequestHeader("Authn") String authn);
 }

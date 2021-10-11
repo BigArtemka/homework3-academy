@@ -4,11 +4,12 @@ import com.example.aggregator.data.Payment;
 import com.example.aggregator.dto.ResponseDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.List;
 
 @FeignClient(value = "data")
 public interface DataClient {
   @GetMapping
-  List<Payment> getPayments();
+  List<Payment> getPayments(@RequestHeader("Authn") String authn);
 }

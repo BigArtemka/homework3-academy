@@ -16,10 +16,10 @@ public class PaymentService {
     private final DataClient dataClient;
     private final UserClient userClient;
 
-    public List<PaymentWithUsername> statistic() {
-        final var payments = dataClient.getPayments();
+    public List<PaymentWithUsername> statistic(String authn) {
+        final var payments = dataClient.getPayments(authn);
         final var userIds = payments.stream().map(Payment::getSenderId).collect(Collectors.toSet());
-        final var users = userClient.getIdNameMap(userIds);
+        final var users = userClient.getIdNameMap(userIds, authn);
         return payments.stream().map(p ->
                 new PaymentWithUsername(users.get(p.getSenderId()), p.getSenderCardNumber(),
                         p.getAmount(), p.getComment())).collect(Collectors.toList());

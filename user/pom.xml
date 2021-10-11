@@ -16,6 +16,8 @@
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>2020.0.4</spring-cloud.version>
+        <nimbus-jose-jwt.version>9.15.2</nimbus-jose-jwt.version>
+        <bcprov-jdk15on.version>1.69</bcprov-jdk15on.version>
     </properties>
     <dependencies>
         <dependency>
@@ -30,6 +32,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -42,9 +48,29 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>${bcprov-jdk15on.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>${nimbus-jose-jwt.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.8</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <dependencyManagement>

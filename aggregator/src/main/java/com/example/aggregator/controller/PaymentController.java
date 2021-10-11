@@ -5,6 +5,7 @@ import com.example.aggregator.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ public class PaymentController {
 
 
     @GetMapping("/payments")
-    public List<PaymentWithUsername> statistic() {
-        return paymentService.statistic();
+    public List<PaymentWithUsername> statistic(@RequestHeader("Authn") String authn) {
+        return paymentService.statistic(authn);
     }
 }

@@ -1,13 +1,13 @@
 package com.example.user.controller;
 
 
+import com.example.user.dto.TokenResponseDto;
 import com.example.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.Map;
@@ -21,8 +21,13 @@ public class UserController {
     private final UserService service;
 
     @PostMapping
-    Map<Long, String> getIdNameMap(@RequestBody Set<Long> userIds) {
+    Map<Long, String> getIdNameMap(@RequestBody Set<Long> userIds, @RequestHeader("Authn") String authn) {
         logger.info("getUsersById");
         return service.getIdNameMap(userIds);
+    }
+
+    @GetMapping("/token")
+    TokenResponseDto getToken(Authentication authentication) {
+        return service.getToken(authentication);
     }
 }

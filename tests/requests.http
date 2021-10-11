@@ -27,5 +27,46 @@ Content-Type: application/json
 ###
 
 GET http://localhost:9000/aggregator/api/payments
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE2MzM5MTk3ODQsImlhdCI6MTYzMzkxNjE4NCwidXNlcklkIjoxLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.S2vrFqWh1_vT42YiyQGPq_fevReYizEMTjKbPUY9UmGMVGB5OH1aD0OSG7I-FhDH51EpxsC3rk6ZErEaCP5lEku5rn3tgRWFYHf_SH-3JohXQJAhKuf2SICipXtVZ2qPIwp6MVuBp5P0CS6sqYy1rMYKU9r3hdLl4DCADLukoLB3OXIsItdrSrMfCw0UOVM5WcKTZtFlveacPWnboWnMJ-wfsMfN4WCNwlEzkvl2Kx8fqYljr0lGOXSk35nrGuDyH5i8ugawLfzxukJdMwdVXG2b9ev0-GqrhV61zAXk9sktPz5XlOLArxuqbChJ9eMvjjbDvT4QuVccGJLdOuFGxQ
 
 ###
+POST http://localhost:9000/producer/api/payments
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE2MzM5MTk3ODQsImlhdCI6MTYzMzkxNjE4NCwidXNlcklkIjoxLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.S2vrFqWh1_vT42YiyQGPq_fevReYizEMTjKbPUY9UmGMVGB5OH1aD0OSG7I-FhDH51EpxsC3rk6ZErEaCP5lEku5rn3tgRWFYHf_SH-3JohXQJAhKuf2SICipXtVZ2qPIwp6MVuBp5P0CS6sqYy1rMYKU9r3hdLl4DCADLukoLB3OXIsItdrSrMfCw0UOVM5WcKTZtFlveacPWnboWnMJ-wfsMfN4WCNwlEzkvl2Kx8fqYljr0lGOXSk35nrGuDyH5i8ugawLfzxukJdMwdVXG2b9ev0-GqrhV61zAXk9sktPz5XlOLArxuqbChJ9eMvjjbDvT4QuVccGJLdOuFGxQ
+Content-Type: application/json
+
+{
+  "type": "payment",
+  "senderCardNumber": "4112 5464 1111 2202",
+  "amount": 1011,
+  "comment": ""
+}
+###
+
+GET http://localhost:9000/user/token
+Authorization: Basic admin password
+
+###
+
+GET http://localhost:9000/user/token
+Authorization: Basic artem password
+
+###
+
+POST http://localhost:9000/producer/api/payments
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE2MzM5MzA4ODYsImlhdCI6MTYzMzkyNzI4NiwidXNlcklkIjoyLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXX0.ioSiZRybLuMFtRHIsRG7G67uYIDFCwOupUIqoHzhnRhYsIrtqGPAUCfy6pwRMo3lenz8oKjhNTiVXDsIRilIRx0YtkLPahIOdfdkmPA3QjcVtiARqyv4kOk1SUwGIAqYNwkSarGAPaFP4ABhfhYPkJYhH3VkTrsUqwNeBJhRSQ7F6GkfeZ55N2dqjgkLSK7Sr7bVlmLi9sr67c9NSQe2ZLoclel6vNR18dIUz4nu8OWP9JFL5oL4V-QOa-NJ1249f-SvdrQiV45S9OLoZCLJkPqLcq-QP6pQlTY7KQmSr-q8C8daHXFo-bnWszwfM4FBpzyx56DmcV3jn-9OtjVsPQ
+Content-Type: application/json
+
+{
+  "type": "payment",
+  "senderCardNumber": "4112 5464 1111 2202",
+  "amount": 1011,
+  "comment": ""
+}
+
+###
+
+GET http://localhost:9000/aggregator/api/payments
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE2MzM5Mjc2OTEsImlhdCI6MTYzMzkyNDA5MSwidXNlcklkIjoyLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXX0.WurS9NrknlJOzMzv7OvxGSZZPQNLxn_cMAtZG_uM9FyA5LBO5hgtvSwQgjEZbAUVubZ2F6CueOV27G8VkFbtCG42peNs0qGBQ2AWhlkJguZEd7HNhrPoVuJzhM0eCsis1IagiJHuX-Y1xrMkURYoSK-sxx7zzyTclDAK6sqcsou-3ORPpJRAa5urEU2Bi2PZMSlz97AlyP7bA7zw9lcj2Nbg4wanmoj7ZTb-DVjeJqvaWwKFpnF_hMNxTISfWNOUNi_utBC54TWQH54gPw4-oGLUDhn3c7iIQx7BAsZZV8OO-sUdRYwSrEQM0f7bSqkLFaMLX76JFhBitCft7wFN_Q
+
+###
+

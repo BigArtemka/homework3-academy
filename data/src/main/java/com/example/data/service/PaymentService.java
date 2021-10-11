@@ -35,8 +35,14 @@ public class PaymentService {
     }
 
 
-    public List<Payment> getPayments() {
+    public List<Payment> getAllPayments() {
         return repository.findOrderedByIdDescLimitedTo(100).stream().map(it ->
+                        new Payment(it.getSenderId(), it.getSenderCardNumber(), it.getAmount(), it.getComment()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Payment> getPaymentsBySenderId(long senderId) {
+        return repository.getAllBySenderId(senderId).stream().map(it ->
                         new Payment(it.getSenderId(), it.getSenderCardNumber(), it.getAmount(), it.getComment()))
                 .collect(Collectors.toList());
     }
